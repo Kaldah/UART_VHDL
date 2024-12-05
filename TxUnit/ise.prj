@@ -1,4 +1,0 @@
-vhdl work "../clkUnit/clkUnit.vhd"
-vhdl work "TxUnit.vhd"
-vhdl work "testTxUnit.vhd"
-vhdl work "../clkUnit/diviseurClk.vhd"

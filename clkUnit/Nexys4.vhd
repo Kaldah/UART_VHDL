@@ -68,5 +68,6 @@ begin
 		enableTX => led(1),
 		enableRX => led(0)
 	);
+
     
 end synthesis;
