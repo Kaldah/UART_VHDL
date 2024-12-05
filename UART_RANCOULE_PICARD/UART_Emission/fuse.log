@@ -1,0 +1,36 @@
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -o bin -prj ise.prj -top RxTester 
+ISim P.20131013 (signature 0xfbc00daa)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Parsing VHDL file "UART_FPGA_N4.vhd" into library work
+Parsing VHDL file "../clkUnit/clkUnit.vhd" into library work
+Parsing VHDL file "../clkUnit/diviseurClk.vhd" into library work
+Parsing VHDL file "../TxUnit/TxUnit.vhd" into library work
+Parsing VHDL file "diviseurClk.vhd" into library work
+Parsing VHDL file "echoUnit.vhd" into library work
+Parsing VHDL file "UART.vhd" into library work
+Parsing VHDL file "ctrlUnit.vhd" into library work
+Parsing VHDL file "EltEtat.vhd" into library work
+Parsing VHDL file "EltInstants.vhd" into library work
+Parsing VHDL file "RxUnit.vhd" into library work
+Parsing VHDL file "RxTester.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 84664 KB
+Fuse CPU Usage: 530 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling architecture behavioral of entity EltInstants [eltinstants_default]
+Compiling architecture behavioral of entity EltEtat [eltetat_default]
+Compiling architecture behavioral of entity RxUnit [rxunit_default]
+Compiling architecture arch_divclk of entity diviseurClk [\diviseurClk(16)\]
+Compiling architecture behavorial of entity clkUnit [clkunit_default]
+Compiling architecture behavior of entity rxtester
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 13 VHDL Units
+Built simulation executable bin
+Fuse Memory Usage: 1175000 KB
+Fuse CPU Usage: 560 ms
+GCC CPU Usage: 960 ms

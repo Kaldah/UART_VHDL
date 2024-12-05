@@ -1,0 +1,34 @@
+ISim log file
+Running: ./bin -tclbatch batch.tcl 
+ISim P.20131013 (signature 0xfbc00daa)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+Time resolution is 1 ps
+# wave add -r RxTester
+# vcd dumpfile output.vcd
+# vcd dumpvars -m RxTester -l 0
+# run 11200ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+at 515 ns(1): Note: Je change le bit 0 de saveData en '1' (/rxtester/uut/etat/).
+at 675 ns(1): Note: Je change le bit 1 de saveData en '0' (/rxtester/uut/etat/).
+at 835 ns(1): Note: Je change le bit 2 de saveData en '1' (/rxtester/uut/etat/).
+at 995 ns(1): Note: Je change le bit 3 de saveData en '1' (/rxtester/uut/etat/).
+at 1155 ns(1): Note: Je change le bit 4 de saveData en '1' (/rxtester/uut/etat/).
+at 1315 ns(1): Note: Je change le bit 5 de saveData en '1' (/rxtester/uut/etat/).
+at 1475 ns(1): Note: Je change le bit 6 de saveData en '0' (/rxtester/uut/etat/).
+at 1635 ns(1): Note: Je change le bit 7 de saveData en '1' (/rxtester/uut/etat/).
+at 1795 ns(1): Note: Je récupère le bit de fin qui est '1' (/rxtester/uut/etat/).
+at 2115 ns(1): Note: Je change le bit 0 de saveData en '1' (/rxtester/uut/etat/).
+at 2275 ns(1): Note: Je change le bit 1 de saveData en '1' (/rxtester/uut/etat/).
+at 2435 ns(1): Note: Je change le bit 2 de saveData en '1' (/rxtester/uut/etat/).
+at 2595 ns(1): Note: Je change le bit 3 de saveData en '1' (/rxtester/uut/etat/).
+at 2755 ns(1): Note: Je change le bit 4 de saveData en '0' (/rxtester/uut/etat/).
+at 2915 ns(1): Note: Je change le bit 5 de saveData en '1' (/rxtester/uut/etat/).
+at 3075 ns(1): Note: Je change le bit 6 de saveData en '1' (/rxtester/uut/etat/).
+at 3235 ns(1): Note: Je change le bit 7 de saveData en '1' (/rxtester/uut/etat/).
+at 3395 ns(1): Note: Je récupère le bit de fin qui est '1' (/rxtester/uut/etat/).
+# vcd dumpflush
+# exit
