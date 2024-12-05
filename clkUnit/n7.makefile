@@ -2,6 +2,7 @@
 SRC = clkUnit.vhd             \
       testClkUnit.vhd \
       diviseurClk1Hz.vhd \
+      diviseurClk.vhd \
       Nexys4.vhd
 
 # for simulation:

@@ -12,21 +12,22 @@ end clkUnit;
 
 architecture behavorial of clkUnit is
 
-  component diviseurClk1Hz is
+  component diviseurClk is
+    generic (facteur : natural);
     port (
       clk, reset : in  std_logic;
       nclk       : out std_logic);
-  end component;
+  end component diviseurClk;
 
 begin
 
-div_clk: diviseurClk1Hz 
-  generic map(facteur => 16)
-  port map(
-    clk=>clk, 
-    reset=>reset, 
-    nclk=>enableTX
-    );
+  inst_div_clk: diviseurClk
+    generic map(16)
+    port map(
+      clk=>clk, 
+      reset=>reset, 
+      nclk=>enableTX
+      );
   enableRX<=clk;
 
 end behavorial;
