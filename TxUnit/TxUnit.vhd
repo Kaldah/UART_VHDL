@@ -14,77 +14,81 @@ end TxUnit;
 
 architecture behavorial of TxUnit is
 
-  signal bufferT : std_logic_vector(7 downto 0); -- buffer register
-  signal registerT : std_logic_vector(7 downto 0); --registre d'emission
   signal T : std_logic; --Transimission
 
-  type t_state is (IDLE, CHARGEMENT, PRE_EMMISSION,EMISSION, LAST);
+  type t_etat is (IDLE, CHARGEMENT, PRE_EMISSION, EMISSION, LAST);
+  signal etat : t_etat;
 
 begin
 
-  process(clk, rst)
+  process(clk, reset)
+
+    variable bufferT : std_logic_vector(7 downto 0); -- buffer register
+    variable registerT : std_logic_vector(7 downto 0); --registre d'emission
     variable cpt : integer := 0;
+    variable buff : std_logic; 
   begin
-    if (rst = '0') then
+    if (reset = '0') then
       txd <= '1';
       regE <= '1';
-      bufE <= '1';
+      buff := '1';
       cpt := 0;
-      t_state <= IDLE;
+      etat <= IDLE;
     elsif rising_edge(clk) then
-      case t_state is
+      case etat is
         when IDLE =>
           if (ld = '1') then
-            bufferT <= data;
-            bufE <= '0';
+            bufferT := data;
+            buff := '0';
 
-            t_state <= CHARGEMENT;
+            etat <= CHARGEMENT;
 
           end if;
         when CHARGEMENT => 
-          registerT <= bufferT;
+          registerT := bufferT;
           regE <= '0';
-          bufE <= '1';
-          t_state <= EMMISSION;
+          buff := '1';
+          etat <= EMISSION;
 
-        when PRE_EMMISSION =>
-          if (ld='1' and bufE='1') then
-            bufferT <= data;
-            bufE <= '0';
+        when PRE_EMISSION =>
+          if (ld='1' and buff='1') then
+            bufferT := data;
+            buff := '0';
           end if;
           if (enable = '1') then
             txd <= '0';
             cpt := 7;
-            t_state <= EMISSION;
+            etat <= EMISSION;
           end if;
 
         when EMISSION =>
-          if (ld='1' and bufE='1') then
-            bufferT <= data;
-            bufE <= '0';
+          if (ld='1' and buff='1') then
+            bufferT := data;
+            buff := '0';
           end if;
           if (enable = '1' and cpt > 0) then
             txd <= registerT(cpt);
             cpt := cpt - 1;
           elsif enable = '1' and cpt = 0 then
             txd <= registerT(cpt); --partie a ajouter
-            t_state <= LAST;
+            etat <= LAST;
           end if;
 
         when LAST =>
-          if (ld='1' and bufE='1') then
-            bufferT <= data;
-            bufE <= '0';
+          if (ld='1' and buff='1') then
+            bufferT := data;
+            buff := '0';
           end if;
-          if (enable = '1' and bufE='0') then
-            t_state <= CHARGEMENT;
-          elsif (enable = '1' and bufE='1') then
+          if (enable = '1' and buff='0') then
+            etat <= CHARGEMENT;
+          elsif (enable = '1' and buff='1') then
             txd <= '1';
-            t_state <= IDLE;
+            etat <= IDLE;
           end if;
 
-
+        end case;
     end if;
+    bufE <= buff;
   end process ;
 
 end behavorial;
