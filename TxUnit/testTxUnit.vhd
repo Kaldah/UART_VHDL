@@ -141,6 +141,8 @@ BEGIN
      -- caractère se fait lorsqu'on émet un premier caractère
      -- et ceci quelque soit l'étape d'émission
 
+     
+
      wait;
    end process;
 
