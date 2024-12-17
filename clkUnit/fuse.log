@@ -1,0 +1,26 @@
+Running: /mnt/n7fs/install/xilinx_14.7/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -o bin -prj ise.prj -top testClkUnit 
+ISim P.20131013 (signature 0xfbc00daa)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "clkUnit.vhd" into library work
+Parsing VHDL file "testClkUnit.vhd" into library work
+Parsing VHDL file "diviseurClk1Hz.vhd" into library work
+Parsing VHDL file "diviseurClk.vhd" into library work
+Parsing VHDL file "Nexys4.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 84664 KB
+Fuse CPU Usage: 950 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling architecture arch_divclk of entity diviseurClk [\diviseurClk(16)\]
+Compiling architecture behavorial of entity clkUnit [clkunit_default]
+Compiling architecture behavior of entity testclkunit
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 7 VHDL Units
+Built simulation executable bin
+Fuse Memory Usage: 650576 KB
+Fuse CPU Usage: 970 ms
+GCC CPU Usage: 90 ms

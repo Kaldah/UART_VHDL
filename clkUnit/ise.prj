@@ -1,0 +1,5 @@
+vhdl work "clkUnit.vhd"
+vhdl work "testClkUnit.vhd"
+vhdl work "diviseurClk1Hz.vhd"
+vhdl work "diviseurClk.vhd"
+vhdl work "Nexys4.vhd"
