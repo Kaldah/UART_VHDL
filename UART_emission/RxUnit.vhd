@@ -5,11 +5,13 @@ entity RxUnit is
   port (
     clk, reset       : in  std_logic; --clk rythme la communication avec le processseur
     enable           : in  std_logic; --rythme l'unité de reception pour lire les bits
-    read             : in  std_logic;
+    read             : in  std_logic; -- a 1 si le processeur veut lire data
     rxd              : in  std_logic; --reception des bits un par un
     data             : out std_logic_vector(7 downto 0); --retransmission des bits du rxd
     Ferr, OErr, DRdy : out std_logic); 
-    --DRdy=1 quand donnee recu, FErr=1 trame recu erronee: bit de parité ou et le bit de stop erronee, OErr=1 quand une donnee est prete, elle n'est pas lue a temps pour le processeur
+    --DRdy=1 quand donnee recu, 
+    --FErr=1 trame recu erronee: bit de parité ou et le bit de stop erronee 
+    --OErr=1 quand une donnee est prete, elle n'est pas lue a temps pour le processeur
 end RxUnit;
 
 --2 parties: 
@@ -28,10 +30,18 @@ end RxUnit;
 
 --Fin de reception
 --CAS 1: Si le bit de stop ou le bit de parité est incorrect alors on avertir le processeur => FErr = 0
---CAS 2: Sinon, on position DRdy=1 et la donnee en sortie
+--CAS 2: Sinon, on position DRdy=1 et la donnee en sortie. Au front montant  de clk, on rabaisse le DRdy et 
+-- if read = 0 alors OErr=1 -> le processeur n'a pas lu la donnes recue
+-- if read = 1 alors le processeur a lu la donnee recue
 
 architecture RxUnit_arch of RxUnit is
-
+  
 begin
+  data <= (others => '0');
+  Ferr <= '0';
+  OErr <= '0';
+  DRdy <= '0';
+
+
 
 end RxUnit_arch;

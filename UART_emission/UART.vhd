@@ -18,12 +18,61 @@ architecture UARTunit_arch of UARTunit is
 
   -- a completer avec l'interface des differents composants
   -- de l'UART
+  -- LES 4 COMPOSANTS
+
+  COMPONENT TxUnit
+  PORT(
+    clk, reset : IN  std_logic;
+    enable : IN  std_logic;
+    ld : IN  std_logic;
+    txd : OUT  std_logic;
+    regE : OUT  std_logic;
+    bufE : OUT  std_logic;
+    data : IN  std_logic_vector(7 downto 0)
+  );
+  END COMPONENT;
+
+  COMPONENT RxUnit
+  PORT(
+    clk, reset : IN  std_logic;
+    enable : IN  std_logic;
+    read : IN  std_logic;
+    rxd : IN  std_logic;
+    data : OUT std_logic_vector(7 downto 0);
+    Ferr, OErr, DRdy : OUT std_logic
+  );
+  END COMPONENT;
+
+  COMPONENT clkUnit
+  PORT(
+    clk : IN  std_logic;
+    reset : IN  std_logic;
+    enableTX : OUT  std_logic;
+    enableRX : OUT  std_logic
+  );
+  END COMPONENT;
+
+  COMPONENT ctrlUnit  
+  PORT(
+    clk, reset : IN  std_logic;
+    rd, cs : IN  std_logic;
+    DRdy, FErr, OErr: IN  std_logic_vector(7 downto 0);
+    BufE, RegE : IN std_logic_vector(7 downto 0);
+    IntR, IntT : OUT std_logic
+    ctrlReg : OUT std_logic_vector(7 downto 0)
+  );
+  END COMPONENT;
 
   signal lecture, ecriture : std_logic;
   signal donnees_recues : std_logic_vector(7 downto 0);
   signal registre_controle : std_logic_vector(7 downto 0);
 
   -- a completer par les signaux internes manquants
+  signal ld : std_logic;
+  signal buf : std_logic_vector(7 downto 0);
+  signal reg : std_logic_vector(7 downto 0);
+  signal Ferr, OErr, DRdy : std_logic;
+  signal enableTX, enableRX : std_logic;
 
   begin  -- UARTunit_arch
 
@@ -34,5 +83,51 @@ architecture UARTunit_arch of UARTunit is
                 else "00000000";
   
     -- a completer par la connexion des differents composants
+    
+    clk_unit: clkUnit PORT MAP (
+      clk => clk,
+      reset => reset,
+      enableTX => enableTX,
+      enableRX => enableRX
+    );
+    
+
+    Tx: TxUnit PORT MAP (
+      clk => clk,
+      reset => reset,
+      enable => ecriture,
+      ld => ld,
+      txd => TxD,
+      regE => reg,
+      bufE => buf,
+      data => data_in
+    );
+
+    Rx: RxUnit PORT MAP (
+      clk => clk,
+      reset => reset,
+      enable => lecture,
+      read => rd,
+      rxd => RxD,
+      data => donnees_recues,
+      Ferr => Ferr,
+      OErr => OErr,
+      DRdy => DRdy
+    );
+
+    control_unit: ctrlUnit PORT MAP (
+      clk => clk,
+      reset => reset,
+      rd => rd,
+      cs => cs,
+      DRdy => donnees_recues,
+      FErr => Ferr,
+      OErr => OErr,
+      BufE => buf,
+      RegE => reg,
+      IntR => IntR,
+      IntT => IntT,
+      ctrlReg => registre_controle
+    );
 
   end UARTunit_arch;
