@@ -1,0 +1,29 @@
+Command line:
+   bin
+     -simmode  tcl
+     -simrunnum  0
+     -socket  48905
+
+Tue Dec 17 16:06:55 2024
+
+
+ Elaboration Time: 0.02 sec
+
+ Current Memory Usage: 159.891 Meg
+
+ Total Signals          : 28
+ Total Nets             : 20
+ Total Signal Drivers   : 11
+ Total Blocks           : 5
+ Total Primitive Blocks : 3
+ Total Processes        : 5
+ Total Traceable Variables  : 10
+ Total Scalar Nets and Variables : 382
+Total Line Count : 93
+
+ Total Simulation Time: 0.03 sec
+
+ Current Memory Usage: 236.925 Meg
+
+Tue Dec 17 16:06:55 2024
+

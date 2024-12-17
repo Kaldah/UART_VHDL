@@ -63,8 +63,8 @@ ARCHITECTURE behavior OF testTxUnit IS
 
    signal clk : std_logic := '0';
    signal reset : std_logic := '0';
-   signal enableTx : std_logic := '0';
-   signal enableRx : std_logic := '0';
+   signal enableTx : std_logic;
+   signal enableRx : std_logic;
    signal ld : std_logic := '0';
    signal data : std_logic_vector(7 downto 0) := (others => '0');
 
@@ -135,13 +135,40 @@ BEGIN
      end if;
      wait for clk_period;
      ld <= '0';
-
+	 
      -- compléter avec des tests qui montrent que la prise
      -- en compte de la demande d'émission d'un second
      -- caractère se fait lorsqu'on émet un premier caractère
      -- et ceci quelque soit l'étape d'émission
+		
+	  wait for 2300 ns;
+	  -- émission du caractère 0x2A
+     data <= "00101010";
+     ld <= '1';
 
-     
+     -- on attend de voir que l'ordre d'émission
+     -- a été bien pris en compte avant de rabaisser
+     -- le signal ld
+     if not (regE='1' and bufE='0') then
+       wait until regE='1' and bufE='0';
+     end if;
+     wait for clk_period;
+     ld <= '0';
+	  
+	  
+	  wait for 2300 ns;
+	  -- émission du caractère 0x42
+     data <= "01000010";
+     ld <= '1';
+
+     -- on attend de voir que l'ordre d'émission
+     -- a été bien pris en compte avant de rabaisser
+     -- le signal ld
+     if not (regE='1' and bufE='0') then
+       wait until regE='1' and bufE='0';
+     end if;
+     wait for clk_period;
+     ld <= '0';
 
      wait;
    end process;
