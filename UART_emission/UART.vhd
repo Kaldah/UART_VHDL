@@ -68,7 +68,8 @@ architecture UARTunit_arch of UARTunit is
   signal registre_controle : std_logic_vector(7 downto 0);
 
   -- a completer par les signaux internes manquants
-  signal ld : std_logic;
+  
+  
   signal buf : std_logic_vector(7 downto 0);
   signal reg : std_logic_vector(7 downto 0);
   signal Ferr, OErr, DRdy : std_logic;
@@ -95,8 +96,8 @@ architecture UARTunit_arch of UARTunit is
     Tx: TxUnit PORT MAP (
       clk => clk,
       reset => reset,
-      enable => ecriture,
-      ld => ld,
+      enable => enableTX,
+      ld => ecriture,
       txd => TxD,
       regE => reg,
       bufE => buf,
@@ -106,8 +107,8 @@ architecture UARTunit_arch of UARTunit is
     Rx: RxUnit PORT MAP (
       clk => clk,
       reset => reset,
-      enable => lecture,
-      read => rd,
+      enable => enableRX,
+      read => lecture,
       rxd => RxD,
       data => donnees_recues,
       Ferr => Ferr,
@@ -120,7 +121,7 @@ architecture UARTunit_arch of UARTunit is
       reset => reset,
       rd => rd,
       cs => cs,
-      DRdy => donnees_recues,
+      DRdy => DRdy,
       FErr => Ferr,
       OErr => OErr,
       BufE => buf,
