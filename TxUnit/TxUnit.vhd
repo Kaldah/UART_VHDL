@@ -45,11 +45,10 @@ begin
           if (ld = '1') then
             bufferT := data;
             buff := '0';
-				bit_parite <= '0';
             etat <= CHARGEMENT;
-
           end if;
-        when CHARGEMENT => 
+        when CHARGEMENT =>
+          bit_parite <= '0';
           registerT := bufferT;
           regE <= '0';
           buff := '1';
@@ -67,7 +66,7 @@ begin
           end if;
 
         when EMISSION =>
-          if (enable= '1' and ld='1' and buff='1') then
+          if (ld='1' and buff='1') then
             bufferT := data;
             buff := '0';
           end if;
@@ -87,27 +86,28 @@ begin
 				regE <= '1';
 				txd <= bit_parite;
 				etat <= LAST;
-				if (ld='1' and buff='1') then
-					bufferT := data;
-					buff := '0';
-				end if;
-			end if;
-			
+      end if;
+      if (ld='1' and buff='1') then
+        bufferT := data;
+        buff := '0';
+      end if;
 			
 
-        when LAST =>
-          if (ld='1' and buff='1') then
-            bufferT := data;
-            buff := '0';
-          end if;
-          if (enable = '1' and buff='0') then
+      when LAST =>
+        if (ld='1' and buff='1') then
+          bufferT := data;
+          buff := '0';
+        end if;
+
+        if (enable = '1') then
+          txd <= '1';
+          if (buff='0') then
             etat <= CHARGEMENT;
-          elsif (enable = '1' and buff='1') then
-            txd <= '1';
+          else
             etat <= IDLE;
           end if;
-
-        end case;
+        end if;
+      end case;
     end if;
     bufE <= buff;
   end process ;
