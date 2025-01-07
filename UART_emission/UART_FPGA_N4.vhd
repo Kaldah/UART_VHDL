@@ -17,7 +17,7 @@ entity UART_FPGA_N4 is
     -- les anodes pour sélectionner les afficheurs 7 segments à utiliser
     an : out std_logic_vector (7 downto 0);
     -- valeur affichée sur les 7 segments (point décimal compris, segment 7)
-    ssg : out std_logic_vector (7 downto 0)
+    ssg : out std_logic_vector (7 downto 0);
     -- ligne série (à rajouter)
     RxD : in std_logic;
     TxD : out std_logic
@@ -44,6 +44,7 @@ architecture synthesis of UART_FPGA_N4 is
   END COMPONENT;
 
   COMPONENT diviseurClk
+  generic (facteur : natural);
   PORT(
     clk, reset : IN  std_logic;
     nclk       : OUT std_logic
@@ -57,7 +58,7 @@ architecture synthesis of UART_FPGA_N4 is
     IntR, IntT : IN std_logic;
     addr : IN  std_logic_vector(1 downto 0);
     data_in : IN  std_logic_vector(7 downto 0);
-    data_out : out  std_logic_vector(7 downto 0);
+    data_out : out  std_logic_vector(7 downto 0)
   );
   END COMPONENT;
 
@@ -72,22 +73,18 @@ architecture synthesis of UART_FPGA_N4 is
 begin
 
   -- instanciation du (des) composant(s)
-
-
-  
-
-
   divUnit_inst : diviseurClk
-  PORT MAP(
-    clk => mclk,
-    reset => not btnC,
-    nclk => newclk
-  );
+    generic map(645)
+    PORT MAP(
+      clk => mclk,
+      reset => not btnC,
+      nclk => newclk
+    );
 
   UARTunit_inst : UARTunit
   PORT MAP(
-    clk => mclk,
-    reset => btnC,
+    clk => newclk,
+    reset => not btnC,
     cs => passagecs,
     rd => passagerd,
     wr => passagewr,

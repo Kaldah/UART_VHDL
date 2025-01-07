@@ -56,9 +56,9 @@ architecture UARTunit_arch of UARTunit is
   PORT(
     clk, reset : IN  std_logic;
     rd, cs : IN  std_logic;
-    DRdy, FErr, OErr: IN  std_logic_vector(7 downto 0);
-    BufE, RegE : IN std_logic_vector(7 downto 0);
-    IntR, IntT : OUT std_logic
+    DRdy, FErr, OErr: IN  std_logic;
+    BufE, RegE : IN std_logic;
+    IntR, IntT : OUT std_logic;
     ctrlReg : OUT std_logic_vector(7 downto 0)
   );
   END COMPONENT;
@@ -70,8 +70,8 @@ architecture UARTunit_arch of UARTunit is
   -- a completer par les signaux internes manquants
   
   
-  signal buf : std_logic_vector(7 downto 0);
-  signal reg : std_logic_vector(7 downto 0);
+  signal buf : std_logic;
+  signal reg : std_logic;
   signal Ferr, OErr, DRdy : std_logic;
   signal enableTX, enableRX : std_logic;
 
