@@ -1,0 +1,8 @@
+vhdl work "ctrlUnit.vhd"
+vhdl work "echoUnit.vhd"
+vhdl work "diviseurClk.vhd"
+vhdl work "RxUnit.vhd"
+vhdl work "../TxUnit/TxUnit.vhd"
+vhdl work "../clkUnit/clkUnit.vhd"
+vhdl work "UART.vhd"
+vhdl work "UART_FPGA_N4.vhd"

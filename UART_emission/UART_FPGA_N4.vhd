@@ -56,7 +56,7 @@ architecture synthesis of UART_FPGA_N4 is
     clk, reset : IN  std_logic;
     cs, rd, wr: OUT std_logic;
     IntR, IntT : IN std_logic;
-    addr : IN  std_logic_vector(1 downto 0);
+    addr : OUT  std_logic_vector(1 downto 0);
     data_in : IN  std_logic_vector(7 downto 0);
     data_out : out  std_logic_vector(7 downto 0)
   );
