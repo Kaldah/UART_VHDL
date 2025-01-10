@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="error" file="HDLCompiler" num="806" delta="new" >"/home/iaa7519/Documents/Architecture/GrosProjet/UART_VHDL/UART_emission/RxUnit.vhd" Line 92: Syntax error near &quot;<arg fmt="%s" index="1">xor</arg>&quot;.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="806" delta="new" >"/home/iaa7519/Documents/Architecture/GrosProjet/UART_VHDL/UART_emission/RxUnit.vhd" Line 94: Syntax error near &quot;<arg fmt="%s" index="1">else</arg>&quot;.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="806" delta="new" >"/home/iaa7519/Documents/Architecture/GrosProjet/UART_VHDL/UART_emission/RxUnit.vhd" Line 96: Syntax error near &quot;<arg fmt="%s" index="1">if</arg>&quot;.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="854" delta="new" >"/home/iaa7519/Documents/Architecture/GrosProjet/UART_VHDL/UART_emission/RxUnit.vhd" Line 16: Unit &lt;<arg fmt="%s" index="1">rxunit_arch</arg>&gt; ignored due to previous errors.
+</msg>
+
+</messages>
+

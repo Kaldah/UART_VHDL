@@ -32,7 +32,7 @@ architecture UARTunit_arch of UARTunit is
   );
   END COMPONENT;
 
-  COMPONENT RxUnit_4
+  COMPONENT RxUnit
   PORT(
     clk, reset : IN  std_logic;
     enable : IN  std_logic;
@@ -104,7 +104,7 @@ architecture UARTunit_arch of UARTunit is
       data => data_in
     );
 
-    Rx: RxUnit_4 PORT MAP (
+    Rx: RxUnit PORT MAP (
       clk => clk,
       reset => reset,
       enable => enableRX,

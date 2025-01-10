@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<document OS="lin64" product="ISE" version="14.7">
+
+  <!--The data in this file is primarily intended for consumption by Xilinx tools.
+    The structure and the elements are likely to change over the next few releases.
+    This means code written to parse this file will need to be revisited each subsequent release.-->
+
+  <application stringID="Xst" timeStamp="Fri Jan 10 12:59:59 2025">
+    <section stringID="User_Env">
+      <table stringID="User_EnvVar">
+        <column stringID="variable"/>
+        <column stringID="value"/>
+        <row stringID="row" value="0">
+          <item stringID="variable" value="PATH"/>
+          <item stringID="value" value="/mnt/n7fs/install/xilinx_14.7/ISE//bin/lin64:/mnt/n7fs/install/xilinx/ISE/bin/lin64:/applications/opam-4.11.0/4.11.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"/>
+        </row>
+        <row stringID="row" value="1">
+          <item stringID="variable" value="XILINX"/>
+          <item stringID="value" value="/mnt/n7fs/install/xilinx_14.7/ISE/:/mnt/n7fs/install/xilinx/ISE"/>
+        </row>
+        <row stringID="row" value="2">
+          <item stringID="variable" value="LD_LIBRARY_PATH"/>
+          <item stringID="value" value="/mnt/n7fs/install/xilinx_14.7/ISE//lib/lin64:/mnt/n7fs/install/xilinx/ISE/lib/lin64"/>
+        </row>
+      </table>
+      <item stringID="User_EnvOs" value="OS Information">
+        <item stringID="User_EnvOsname" value="Ubuntu"/>
+        <item stringID="User_EnvOsrelease" value="Ubuntu 20.04.6 LTS"/>
+      </item>
+      <item stringID="User_EnvHost" value="hippogriffe.enseeiht.fr"/>
+      <table stringID="User_EnvCpu">
+        <column stringID="arch"/>
+        <column stringID="speed"/>
+        <row stringID="row" value="0">
+          <item stringID="arch" value="Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz"/>
+          <item stringID="speed" value="3682.689 MHz"/>
+        </row>
+      </table>
+    </section>
+    <section stringID="XST_OPTION_SUMMARY">
+      <item DEFAULT="" label="-ifn" stringID="XST_IFN" value="ise.prj"/>
+      <item DEFAULT="" label="-ofn" stringID="XST_OFN" value="UART_FPGA_N4"/>
+      <item DEFAULT="" label="-p" stringID="XST_P" value="xc7a100t-csg324-1"/>
+      <item DEFAULT="" label="-top" stringID="XST_TOP" value="UART_FPGA_N4"/>
+    </section>
+    <section stringID="XST_ERRORS_STATISTICS">
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="4"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="1"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="0"/>
+    </section>
+  </application>
+
+</document>

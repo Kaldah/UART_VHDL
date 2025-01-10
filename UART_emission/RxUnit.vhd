@@ -1,45 +1,122 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
 
 entity RxUnit is
   port (
-    clk, reset       : in  std_logic; --clk rythme la communication avec le processseur
-    enable           : in  std_logic; --rythme l'unité de reception pour lire les bits
-    read             : in  std_logic; -- a 1 si le processeur veut lire data
-    rxd              : in  std_logic; --reception des bits un par un
-    data             : out std_logic_vector(7 downto 0); --retransmission des bits du rxd
-    Ferr, OErr, DRdy : out std_logic); 
-    --DRdy=1 quand donnee recu, 
-    --FErr=1 trame recu erronee: bit de parité ou et le bit de stop erronee 
-    --OErr=1 quand une donnee est prete, elle n'est pas lue a temps pour le processeur
+    clk, reset       : in  std_logic; -- Horloge et reset
+    enable           : in  std_logic; -- Rythme de réception
+    read             : in  std_logic; -- Lecture des données par le processeur
+    rxd              : in  std_logic; -- Entrée série (bit à bit)
+    data             : out std_logic_vector(7 downto 0); -- Données reçues
+    Ferr, OErr, DRdy : out std_logic  -- Signaux d'état
+  );
 end RxUnit;
-
---2 parties: 
--- un element gerant les instants de receptions 
---  -generation de l'horloge tmpClk (frequence de l'horloge d'emission et dont les fronts montant seront "au milieu" des bits recus)
---   -comptage de 8 tops d'enable
---   -detection du bit de start
---   -comptage de 16 tops autant de fois que necessaire pour lire toute la trame
-
--- une element gerant les etats de l'unite de reception
--- role: construire la donnee et verifier  s abonne reception en recuperant un bit a chaque front de tmpClk:
---   -bit de start
---   -8 bits de donnees
---   -bit de parite
---   -bit de stop
-
---Fin de reception
---CAS 1: Si le bit de stop ou le bit de parité est incorrect alors on avertir le processeur => FErr = 0
---CAS 2: Sinon, on position DRdy=1 et la donnee en sortie. Au front montant  de clk, on rabaisse le DRdy et 
--- if read = 0 alors OErr=1 -> le processeur n'a pas lu la donnes recue
--- if read = 1 alors le processeur a lu la donnee recue
 
 architecture RxUnit_arch of RxUnit is
   
+  signal bit_counter   : integer range 0 to 10 := 0; -- Compteur pour les bits de la trame
+  signal sample_counter: integer range 0 to 15 := 0; -- Compteur pour la génération de tmpClk
+  signal tmpClk        : std_logic := '0';          -- Horloge interne
+  signal data_reg      : std_logic_vector(7 downto 0) := (others => '0'); -- Registre pour les données
+  signal parity_bit    : std_logic := '0';          -- Bit de parité reçu
+  signal stop_bit      : std_logic := '0';          -- Bit de stop reçu
+  signal start_bit     : std_logic := '0';          -- Bit de start détecté
+  signal receiving     : std_logic := '0';          -- Indique si une trame est en cours de réception
+  signal Ferr_reg      : std_logic := '0';          -- Registre pour Ferr
+  signal OErr_reg      : std_logic := '0';          -- Registre pour OErr
+  signal DRdy_reg      : std_logic := '0';          -- Registre pour DRdy
+
 begin
-  data <= (others => '0');
-  Ferr <= '0';
-  OErr <= '0';
-  DRdy <= '0';
+  -- Assignations des sorties
+  data  <= data_reg;
+  Ferr  <= Ferr_reg;
+  OErr  <= OErr_reg;
+  DRdy  <= DRdy_reg;
+
+  -- Processus pour la gestion de tmpClk et du comptage des bits
+  process(clk, reset)
+  begin
+    if reset = '1' then
+      sample_counter <= 0;
+      tmpClk <= '0';
+    elsif rising_edge(clk) then
+      if enable = '1' then
+        if receiving = '1' then
+          if sample_counter = 15 then
+            sample_counter <= 0;
+            tmpClk <= not tmpClk;
+          else
+            sample_counter <= sample_counter + 1;
+          end if;
+        else
+          if rxd = '0' and start_bit = '0' then -- Détection du bit de start
+            start_bit <= '1';
+            sample_counter <= 0;
+          end if;
+        end if;
+      end if;
+    end if;
+  end process;
+
+  -- Processus pour la réception des données et la gestion des états
+  process(tmpClk, reset)
+  begin
+    if reset = '1' then
+      bit_counter <= 0;
+      data_reg <= (others => '0');
+      parity_bit <= '0';
+      stop_bit <= '0';
+      receiving <= '0';
+      Ferr_reg <= '0';
+      OErr_reg <= '0';
+      DRdy_reg <= '0';
+    elsif rising_edge(tmpClk) then
+      if receiving = '1' then
+        case bit_counter is
+          when 0 => -- Réception du bit de start
+            if rxd = '0' then
+              bit_counter <= bit_counter + 1;
+            else
+              receiving <= '0';
+            end if;
+          when 1 to 8 => -- Réception des 8 bits de données
+            data_reg(bit_counter - 1) <= rxd;
+            bit_counter <= bit_counter + 1;
+          when 9 => -- Réception du bit de parité
+            parity_bit <= rxd;
+            bit_counter <= bit_counter + 1;
+          when 10 => -- Réception du bit de stop
+            stop_bit <= rxd;
+            receiving <= '0';
+            if stop_bit = '0' or (parity_bit /= not xor reduce(data_reg)) then
+              Ferr_reg <= '1';
+            else
+              DRdy_reg <= '1';
+            end if;
+          when others =>
+            null;
+        end case;
+      else
+        if start_bit = '1' then
+          receiving <= '1';
+          bit_counter <= 0;
+          start_bit <= '0';
+        end if;
+      end if;
+    end if;
+
+    -- Gestion du signal DRdy et des erreurs
+    if rising_edge(clk) then
+      if DRdy_reg = '1' then
+        if read = '1' then
+          DRdy_reg <= '0';
+          OErr_reg <= '0';
+        else
+          OErr_reg <= '1';
+        end if;
+      end if;
+    end if;
+  end process;
 
 end RxUnit_arch;
