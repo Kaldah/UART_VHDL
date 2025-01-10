@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -o "bin" -prj "ise.prj" -top "testTxUnit" 

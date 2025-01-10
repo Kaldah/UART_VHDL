@@ -1,5 +1,0 @@
-run
--ifn ise.prj
--ofn UART_FPGA_N4
--p xc7a100t-csg324-1
--top UART_FPGA_N4
