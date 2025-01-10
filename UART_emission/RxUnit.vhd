@@ -4,37 +4,37 @@ use IEEE.numeric_std.all;
 
 entity RxUnit is
   port (
-    clk, reset       : in  std_logic; -- Horloge et reset
-    enable           : in  std_logic; -- Rythme de réception
-    read             : in  std_logic; -- Lecture des données par le processeur
-    rxd              : in  std_logic; -- Entrée série (bit à bit)
+    clk, reset       : in  std_logic; -- Horloge pour la communication avec le processeur et reset global
+    enable           : in  std_logic; -- Horloge pour rythmer la réception des bits
+    read             : in  std_logic; -- Lecture de la donnée par le processeur
+    rxd              : in  std_logic; -- Entrée série pour les données reçues bit à bit
     data             : out std_logic_vector(7 downto 0); -- Données reçues
-    Ferr, OErr, DRdy : out std_logic  -- Signaux d'état
+    Ferr, OErr, DRdy : out std_logic -- Signaux d'état : erreur de réception, de lecture et donnée prête
   );
 end RxUnit;
 
 architecture RxUnit_arch of RxUnit is
-  
-  signal bit_counter   : integer range 0 to 10 := 0; -- Compteur pour les bits de la trame
-  signal sample_counter: integer range 0 to 15 := 0; -- Compteur pour la génération de tmpClk
-  signal tmpClk        : std_logic := '0';          -- Horloge interne
+  -- Déclaration des signaux internes
+  signal bit_counter   : integer range 0 to 10 := 0; -- Compte les bits de la trame
+  signal sample_counter: integer range 0 to 15 := 0; -- Compte les cycles pour tmpClk
+  signal tmpClk        : std_logic := '0';          -- Horloge interne pour la réception
   signal data_reg      : std_logic_vector(7 downto 0) := (others => '0'); -- Registre pour les données
   signal parity_bit    : std_logic := '0';          -- Bit de parité reçu
   signal stop_bit      : std_logic := '0';          -- Bit de stop reçu
-  signal start_bit     : std_logic := '0';          -- Bit de start détecté
+  signal start_bit     : std_logic := '0';          -- Détection du bit de start
   signal receiving     : std_logic := '0';          -- Indique si une trame est en cours de réception
   signal Ferr_reg      : std_logic := '0';          -- Registre pour Ferr
   signal OErr_reg      : std_logic := '0';          -- Registre pour OErr
   signal DRdy_reg      : std_logic := '0';          -- Registre pour DRdy
 
 begin
-  -- Assignations des sorties
+  -- Assignation des sorties
   data  <= data_reg;
   Ferr  <= Ferr_reg;
   OErr  <= OErr_reg;
   DRdy  <= DRdy_reg;
 
-  -- Processus pour la gestion de tmpClk et du comptage des bits
+  -- Processus pour la génération de tmpClk
   process(clk, reset)
   begin
     if reset = '1' then
@@ -49,17 +49,15 @@ begin
           else
             sample_counter <= sample_counter + 1;
           end if;
-        else
-          if rxd = '0' and start_bit = '0' then -- Détection du bit de start
-            start_bit <= '1';
-            sample_counter <= 0;
-          end if;
+        elsif rxd = '0' and start_bit = '0' then -- Détection du bit de start
+          start_bit <= '1';
+          sample_counter <= 0;
         end if;
       end if;
     end if;
   end process;
 
-  -- Processus pour la réception des données et la gestion des états
+  -- Processus pour la réception des données et le contrôle des états
   process(tmpClk, reset)
   begin
     if reset = '1' then
@@ -97,16 +95,14 @@ begin
           when others =>
             null;
         end case;
-      else
-        if start_bit = '1' then
-          receiving <= '1';
-          bit_counter <= 0;
-          start_bit <= '0';
-        end if;
+      elsif start_bit = '1' then
+        receiving <= '1';
+        bit_counter <= 0;
+        start_bit <= '0';
       end if;
     end if;
 
-    -- Gestion du signal DRdy et des erreurs
+    -- Gestion des signaux DRdy et OErr
     if rising_edge(clk) then
       if DRdy_reg = '1' then
         if read = '1' then
