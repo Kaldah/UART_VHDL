@@ -9,7 +9,7 @@ Target Device  : xc7a100t
 Target Package : csg324
 Target Speed   : -1
 Mapper Version : artix7 -- $Revision: 1.55 $
-Mapped Date    : Fri Jan 10 11:18:09 2025
+Mapped Date    : Fri Jan 10 11:32:03 2025
 
 Mapping design into LUTs...
 Writing file UART_FPGA_N4_map.ngm...
@@ -23,7 +23,7 @@ Total REAL time at the beginning of Placer: 17 secs
 Total CPU  time at the beginning of Placer: 17 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:5c1f5630) REAL time: 19 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:5afa565c) REAL time: 19 secs 
 
 Phase 2.7  Design Feasibility Check
 WARNING:Place:838 - An IO Bus with more than one IO standard is found.
@@ -46,42 +46,42 @@ WARNING:Place:838 - An IO Bus with more than one IO standard is found.
    	 Comp: swt<15>   IOSTANDARD = LVCMOS33
 
 
-Phase 2.7  Design Feasibility Check (Checksum:5c1f5630) REAL time: 19 secs 
+Phase 2.7  Design Feasibility Check (Checksum:5afa565c) REAL time: 19 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:5c1f5630) REAL time: 19 secs 
+Phase 3.31  Local Placement Optimization (Checksum:5afa565c) REAL time: 19 secs 
 
 Phase 4.2  Initial Placement for Architecture Specific Features
 
 Phase 4.2  Initial Placement for Architecture Specific Features
-(Checksum:e5c8dd73) REAL time: 21 secs 
+(Checksum:e4a3dd9f) REAL time: 21 secs 
 
 Phase 5.30  Global Clock Region Assignment
-Phase 5.30  Global Clock Region Assignment (Checksum:e5c8dd73) REAL time: 21 secs 
+Phase 5.30  Global Clock Region Assignment (Checksum:e4a3dd9f) REAL time: 21 secs 
 
 Phase 6.3  Local Placement Optimization
-Phase 6.3  Local Placement Optimization (Checksum:e5c8dd73) REAL time: 21 secs 
+Phase 6.3  Local Placement Optimization (Checksum:e4a3dd9f) REAL time: 21 secs 
 
 Phase 7.5  Local Placement Optimization
-Phase 7.5  Local Placement Optimization (Checksum:e5c8dd73) REAL time: 21 secs 
+Phase 7.5  Local Placement Optimization (Checksum:e4a3dd9f) REAL time: 21 secs 
 
 Phase 8.8  Global Placement
 ..
 ................
 ................
-Phase 8.8  Global Placement (Checksum:58feba17) REAL time: 22 secs 
+Phase 8.8  Global Placement (Checksum:a3e98c0c) REAL time: 22 secs 
 
 Phase 9.5  Local Placement Optimization
-Phase 9.5  Local Placement Optimization (Checksum:58feba17) REAL time: 22 secs 
+Phase 9.5  Local Placement Optimization (Checksum:a3e98c0c) REAL time: 22 secs 
 
 Phase 10.18  Placement Optimization
-Phase 10.18  Placement Optimization (Checksum:54078549) REAL time: 22 secs 
+Phase 10.18  Placement Optimization (Checksum:c1f847f4) REAL time: 22 secs 
 
 Phase 11.5  Local Placement Optimization
-Phase 11.5  Local Placement Optimization (Checksum:54078549) REAL time: 22 secs 
+Phase 11.5  Local Placement Optimization (Checksum:c1f847f4) REAL time: 22 secs 
 
 Phase 12.34  Placement Validation
-Phase 12.34  Placement Validation (Checksum:54078549) REAL time: 22 secs 
+Phase 12.34  Placement Validation (Checksum:c1f847f4) REAL time: 22 secs 
 
 Total REAL time to Placer completion: 22 secs 
 Total CPU  time to Placer completion: 22 secs 
@@ -148,7 +148,7 @@ Slice Logic Utilization:
     Number used exclusively as route-thrus:      0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    32 out of  15,850    1%
+  Number of occupied Slices:                    29 out of  15,850    1%
   Number of LUT Flip Flop pairs used:           61
     Number with an unused Flip Flop:            27 out of      61   44%
     Number with an unused LUT:                   1 out of      61    1%

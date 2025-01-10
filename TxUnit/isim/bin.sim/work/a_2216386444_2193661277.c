@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/home/ccy6321/Documents/S7/Archi/UART_VHDL/clkUnit/clkUnit.vhd";
+static const char *ng0 = "/home/iaa7519/Documents/Architecture/GrosProjet/UART_VHDL/clkUnit/clkUnit.vhd";
 
 
 

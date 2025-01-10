@@ -9,7 +9,7 @@ Target Device  : xc7a100t
 Target Package : csg324
 Target Speed   : -1
 Mapper Version : artix7 -- $Revision: 1.55 $
-Mapped Date    : Fri Jan 10 11:18:09 2025
+Mapped Date    : Fri Jan 10 11:32:03 2025
 
 Design Summary
 --------------
@@ -31,7 +31,7 @@ Slice Logic Utilization:
     Number used exclusively as route-thrus:      0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    32 out of  15,850    1%
+  Number of occupied Slices:                    29 out of  15,850    1%
   Number of LUT Flip Flop pairs used:           61
     Number with an unused Flip Flop:            27 out of      61   44%
     Number with an unused LUT:                   1 out of      61    1%

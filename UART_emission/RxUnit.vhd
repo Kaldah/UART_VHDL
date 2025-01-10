@@ -42,6 +42,4 @@ begin
   OErr <= '0';
   DRdy <= '0';
 
-
-
 end RxUnit_arch;

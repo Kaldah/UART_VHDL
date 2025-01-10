@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-luke.enseeiht.fr::  Fri Jan 10 11:18:34 2025
+luke.enseeiht.fr::  Fri Jan 10 11:32:28 2025
 
 par -w UART_FPGA_N4_map.ncd UART_FPGA_N4.ncd UART_FPGA_N4_map.pcf 
 
@@ -42,7 +42,7 @@ Slice Logic Utilization:
     Number used exclusively as route-thrus:      0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    32 out of  15,850    1%
+  Number of occupied Slices:                    29 out of  15,850    1%
   Number of LUT Flip Flop pairs used:           61
     Number with an unused Flip Flop:            27 out of      61   44%
     Number with an unused LUT:                   1 out of      61    1%
@@ -126,26 +126,26 @@ WARNING:Par:288 - The signal swt<9>_IBUF has no load.  PAR will not attempt to r
 Starting Router
 
 
-Phase  1  : 336 unrouted;      REAL time: 13 secs 
+Phase  1  : 333 unrouted;      REAL time: 13 secs 
 
-Phase  2  : 260 unrouted;      REAL time: 13 secs 
+Phase  2  : 259 unrouted;      REAL time: 13 secs 
 
-Phase  3  : 38 unrouted;      REAL time: 13 secs 
+Phase  3  : 37 unrouted;      REAL time: 14 secs 
 
-Phase  4  : 38 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
+Phase  4  : 37 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
 
 Updating file: UART_FPGA_N4.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
 
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
 
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
-Total REAL time to Router completion: 15 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
+Total REAL time to Router completion: 16 secs 
 Total CPU time to Router completion: 15 secs 
 
 Partition Implementation Status
@@ -166,11 +166,11 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net div | SETUP       |         N/A|     2.961ns|     N/A|           0
-  Unit_inst/nclk_BUFG                       | HOLD        |     0.076ns|            |       0|           0
+  Autotimespec constraint for clock net div | SETUP       |         N/A|     2.991ns|     N/A|           0
+  Unit_inst/nclk_BUFG                       | HOLD        |     0.129ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net mcl | SETUP       |         N/A|     3.409ns|     N/A|           0
-  k_BUFGP                                   | HOLD        |     0.288ns|            |       0|           0
+  Autotimespec constraint for clock net mcl | SETUP       |         N/A|     3.403ns|     N/A|           0
+  k_BUFGP                                   | HOLD        |     0.284ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -189,9 +189,9 @@ All signals are completely routed.
 WARNING:Par:283 - There are 21 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
 Total REAL time to PAR completion: 16 secs 
-Total CPU time to PAR completion: 15 secs 
+Total CPU time to PAR completion: 16 secs 
 
-Peak Memory Usage:  1039 MB
+Peak Memory Usage:  1038 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.
