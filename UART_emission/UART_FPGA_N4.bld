@@ -16,11 +16,6 @@ Checking Constraint Associations...
 Done...
 
 Checking expanded design ...
-ERROR:NgdBuild:604 - logical block 'UARTunit_inst/Rx' with type 'RxUnit_4' could
-   not be resolved. A pin name misspelling can cause this, a missing edif or ngc
-   file, case mismatch between the block name and the edif or ngc file name, or
-   the misspelling of a type name. Symbol 'RxUnit_4' is not supported in target
-   'artix7'.
 
 Partition Implementation Status
 -------------------------------
@@ -30,14 +25,13 @@ Partition Implementation Status
 -------------------------------
 
 NGDBUILD Design Results Summary:
-  Number of errors:     1
+  Number of errors:     0
   Number of warnings:   0
 
-Total memory usage is 450828 kilobytes
+Total memory usage is 450664 kilobytes
 
+Writing NGD file "UART_FPGA_N4.ngd" ...
 Total REAL time to NGDBUILD completion:  4 sec
 Total CPU time to NGDBUILD completion:   4 sec
-
-One or more errors were found during NGDBUILD.  No NGD file will be written.
 
 Writing NGDBUILD log file "UART_FPGA_N4.bld"...

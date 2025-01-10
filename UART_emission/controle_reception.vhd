@@ -1,9 +1,13 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
 entity ControleReception is
     Port (
         clk : in std_logic;
         reset : in std_logic;
         tmprxd : in std_logic;
         tmpclk : in std_logic;
+        read : in std_logic;
         data : out std_logic_vector(7 downto 0);
         Ferr : out std_logic;
         OErr : out std_logic;
