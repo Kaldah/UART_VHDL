@@ -26,7 +26,6 @@ architecture RxUnit_arch of RxUnit is
   signal Ferr_reg      : std_logic := '0';          -- Registre pour Ferr
   signal OErr_reg      : std_logic := '0';          -- Registre pour OErr
   signal DRdy_reg      : std_logic := '0';          -- Registre pour DRdy
-
 begin
   -- Assignation des sorties
   data  <= data_reg;
@@ -87,7 +86,12 @@ begin
           when 10 => -- Réception du bit de stop
             stop_bit <= rxd;
             receiving <= '0';
-            if stop_bit = '0' or (parity_bit /= not xor reduce(data_reg)) then
+            -- Calcul de la parité directement dans ce bloc
+            variable calculated_parity: std_logic := '0';
+            for i in data_reg'range loop
+              calculated_parity := calculated_parity XOR data_reg(i);
+            end loop;
+            if stop_bit = '0' or (parity_bit /= calculated_parity) then
               Ferr_reg <= '1';
             else
               DRdy_reg <= '1';
