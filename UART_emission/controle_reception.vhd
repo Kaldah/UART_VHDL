@@ -18,37 +18,50 @@ end ControleReception;
 architecture Behavioral of ControleReception is
     signal received_data : std_logic_vector(7 downto 0) := (others => '0');
     signal bit_count : integer range 0 to 8 := 0;
-    signal start_detected : std_logic := '0';
+
+    type t_etat is (repos, reception, transfert);
+    signal etat : t_etat := repos;
 begin
-    process(tmpclk, reset)
+
+    process(clk, reset)
     begin
-        if reset = '1' then
+        if reset= '0' then
+            received_data <= (others => '0');
             bit_count <= 0;
-            start_detected <= '0';
             Ferr <= '0';
+            OErr <= '0';
             DRdy <= '0';
-        elsif rising_edge(tmpclk) then
-            if start_detected = '0' then
-                if tmprxd = '0' then  -- Start bit detected
-                    start_detected <= '1';
-                    bit_count <= 0;
-                end if;
-            else
-                if bit_count < 8 then
-                    received_data(bit_count) <= tmprxd;
-                    bit_count <= bit_count + 1;
-                else
-                    if tmprxd = '1' then  -- Stop bit
-                        DRdy <= '1';
-                    else
-                        Ferr <= '1';
+            etat <= repos;
+        elsif rising_edge(clk) then
+            case etat is 
+                when repos => 
+                    if read = '1' then
+                        if tmpclk = '1' and tmprxd = '0' then
+                            etat <= reception;
+                        end if;
                     end if;
-                    start_detected <= '0';
-                end if;
-            end if;
+                when reception =>
+                    if tmpclk = '0' then
+                        if bit_count < 8 then
+                            received_data(bit_count) <= tmprxd;
+                            bit_count <= bit_count + 1;
+                        elsif bit_count = 8 then
+                                etat <= transfert;
+                        end if;
+                    end if;
+                when transfert =>
+                    DRdy <= '0';
+                    if read = '0'then
+                        OErr <= '1';
+                    end if;
+                    etat <= repos;
+
+                    
+
+            end case;
         end if;
+    
+
     end process;
 
-    data <= received_data;
-    OErr <= '0';  -- To be handled based on specific conditions
 end Behavioral;

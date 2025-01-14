@@ -37,9 +37,10 @@ begin
                     end if;
                 when count8 =>
                     count <= count + 1;
-                    if count = 8 then
+                    if count = 7 then
                         tmpclk <= '1';
                         tmprxd <= RxD;
+                        count <= 0;
                         etat <= count16;
                     end if;
                 when count16 =>
