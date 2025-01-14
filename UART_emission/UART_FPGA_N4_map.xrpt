@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Fri Jan 10 14:01:27 2025">
+  <application stringID="Map" timeStamp="Tue Jan 14 15:53:01 2025">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -25,15 +25,15 @@
       </table>
       <item stringID="User_EnvOs" value="OS Information">
         <item stringID="User_EnvOsname" value="Ubuntu"/>
-        <item stringID="User_EnvOsrelease" value="Ubuntu 20.04.6 LTS"/>
+        <item stringID="User_EnvOsrelease" value="Ubuntu 20.04.3 LTS"/>
       </item>
-      <item stringID="User_EnvHost" value="hippogriffe.enseeiht.fr"/>
+      <item stringID="User_EnvHost" value="gambit.enseeiht.fr"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
           <item stringID="arch" value="Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz"/>
-          <item stringID="speed" value="3698.382 MHz"/>
+          <item stringID="speed" value="3642.549 MHz"/>
         </row>
       </table>
     </section>
@@ -98,8 +98,8 @@
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="MAP_NUM_WARNINGS" value="20"/>
         <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="1228120"/>
-        <item stringID="MAP_TOTAL_REAL_TIME" value="21 secs "/>
-        <item stringID="MAP_TOTAL_CPU_TIME" value="21 secs "/>
+        <item stringID="MAP_TOTAL_REAL_TIME" value="20 secs "/>
+        <item stringID="MAP_TOTAL_CPU_TIME" value="20 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING">
         <item AVAILABLE="126800" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="37">
@@ -131,8 +131,8 @@
           <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_CARRY4" value="0"/>
           <item dataType="int" stringID="MAP_NUM_LUT_RT_DRIVES_OTHERS" value="0"/>
         </item>
-        <item AVAILABLE="15850" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="25">
-          <item AVAILABLE="11100" dataType="int" stringID="MAP_NUM_SLICEL" value="25"/>
+        <item AVAILABLE="15850" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="27">
+          <item AVAILABLE="11100" dataType="int" stringID="MAP_NUM_SLICEL" value="27"/>
           <item AVAILABLE="4750" dataType="int" stringID="MAP_NUM_SLICEM" value="0"/>
         </item>
         <item dataType="int" label="Number of LUT Flip Flop pairs used" stringID="MAP_OCCUPIED_LUT_AND_FF" value="61">

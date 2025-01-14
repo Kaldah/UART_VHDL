@@ -103,6 +103,7 @@ Elaborating entity <RxUnit> (architecture <Behavioral>) from library <work>.
 Elaborating entity <Compteur16> (architecture <Behavioral>) from library <work>.
 
 Elaborating entity <ControleReception> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:1127 - "/home/iaa7519/Documents/Architecture/GrosProjet/UART_VHDL/UART_emission/controle_reception.vhd" Line 26: Assignment to received_data ignored, since the identifier is never used
 
 Elaborating entity <ctrlUnit> (architecture <ctrlUnit_arch>) from library <work>.
 
@@ -202,32 +203,62 @@ Unit <RxUnit> synthesized.
 
 Synthesizing Unit <Compteur16>.
     Related source file is "/home/iaa7519/Documents/Architecture/GrosProjet/UART_VHDL/UART_emission/compteur16.vhd".
+    Found 1-bit register for signal <tmprxd>.
+    Found 2-bit register for signal <etat>.
     Found 4-bit register for signal <count>.
     Found 1-bit register for signal <tmpclk>.
-    Found 1-bit register for signal <tmprxd>.
-    Found 4-bit adder for signal <count[3]_GND_13_o_add_2_OUT> created at line 32.
+    Found 4-bit register for signal <counter_trames>.
+    Found finite state machine <FSM_1> for signal <etat>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 7                                              |
+    | Inputs             | 4                                              |
+    | Outputs            | 2                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (negative)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | repos                                          |
+    | Power Up State     | repos                                          |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4-bit adder for signal <count[3]_GND_13_o_add_6_OUT> created at line 47.
+    Found 4-bit adder for signal <counter_trames[3]_GND_13_o_add_8_OUT> created at line 52.
     Summary:
-	inferred   1 Adder/Subtractor(s).
-	inferred   6 D-type flip-flop(s).
-	inferred   1 Multiplexer(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  10 D-type flip-flop(s).
+	inferred   5 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
 Unit <Compteur16> synthesized.
 
 Synthesizing Unit <ControleReception>.
     Related source file is "/home/iaa7519/Documents/Architecture/GrosProjet/UART_VHDL/UART_emission/controle_reception.vhd".
-WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <read> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:653 - Signal <data> is used but never assigned. This sourceless signal will be automatically connected to value GND.
     Found 4-bit register for signal <bit_count>.
-    Found 1-bit register for signal <start_detected>.
-    Found 1-bit register for signal <Ferr>.
+    Found 2-bit register for signal <etat>.
+    Found 1-bit register for signal <OErr>.
     Found 1-bit register for signal <DRdy>.
-    Found 8-bit register for signal <received_data>.
-    Found 4-bit adder for signal <bit_count[3]_GND_14_o_add_3_OUT> created at line 39.
-    Found 4-bit comparator greater for signal <bit_count[3]_PWR_14_o_LessThan_2_o> created at line 37
+    Found finite state machine <FSM_2> for signal <etat>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 9                                              |
+    | Inputs             | 5                                              |
+    | Outputs            | 2                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (negative)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | repos                                          |
+    | Power Up State     | repos                                          |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4-bit adder for signal <bit_count[3]_GND_15_o_add_4_OUT> created at line 47.
+    Found 4-bit comparator greater for signal <bit_count[3]_PWR_14_o_LessThan_3_o> created at line 45
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  15 D-type flip-flop(s).
+	inferred   5 D-type flip-flop(s).
 	inferred   1 Comparator(s).
-	inferred   9 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
 Unit <ControleReception> synthesized.
 
 Synthesizing Unit <ctrlUnit>.
@@ -253,7 +284,7 @@ WARNING:Xst:647 - Input <IntT> is never used. This port will be preserved and le
     Found 8-bit register for signal <data_out>.
     Found 2-bit register for signal <addr>.
     Found 8-bit register for signal <donnee>.
-    Found finite state machine <FSM_1> for signal <etat>.
+    Found finite state machine <FSM_3> for signal <etat>.
     -----------------------------------------------------------------------
     | States             | 6                                              |
     | Transitions        | 9                                              |
@@ -277,28 +308,28 @@ Unit <echoUnit> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 5
+# Adders/Subtractors                                   : 6
  10-bit adder                                          : 1
  32-bit subtractor                                     : 1
- 4-bit adder                                           : 3
-# Registers                                            : 31
- 1-bit register                                        : 20
+ 4-bit adder                                           : 4
+# Registers                                            : 29
+ 1-bit register                                        : 18
  10-bit register                                       : 1
  2-bit register                                        : 1
  32-bit register                                       : 1
- 4-bit register                                        : 3
- 8-bit register                                        : 5
+ 4-bit register                                        : 4
+ 8-bit register                                        : 4
 # Comparators                                          : 2
  32-bit comparator greater                             : 1
  4-bit comparator greater                              : 1
-# Multiplexers                                         : 38
- 1-bit 2-to-1 multiplexer                              : 25
+# Multiplexers                                         : 33
+ 1-bit 2-to-1 multiplexer                              : 18
  1-bit 8-to-1 multiplexer                              : 1
  10-bit 2-to-1 multiplexer                             : 1
  32-bit 2-to-1 multiplexer                             : 1
- 4-bit 2-to-1 multiplexer                              : 3
+ 4-bit 2-to-1 multiplexer                              : 5
  8-bit 2-to-1 multiplexer                              : 7
-# FSMs                                                 : 2
+# FSMs                                                 : 4
 # Xors                                                 : 1
  1-bit xor2                                            : 1
 
@@ -311,7 +342,7 @@ Macro Statistics
 WARNING:Xst:2404 -  FFs/Latches <addr<1:1>> (without init value) have a constant value of 0 in block <echoUnit>.
 
 Synthesizing (advanced) Unit <Compteur16>.
-The following registers are absorbed into counter <count>: 1 register on signal <count>.
+The following registers are absorbed into counter <counter_trames>: 1 register on signal <counter_trames>.
 Unit <Compteur16> synthesized (advanced).
 
 Synthesizing (advanced) Unit <ControleReception>.
@@ -334,25 +365,25 @@ Unit <diviseurClk_2> synthesized (advanced).
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 2
+# Adders/Subtractors                                   : 3
  10-bit adder                                          : 1
- 4-bit adder                                           : 1
+ 4-bit adder                                           : 2
 # Counters                                             : 5
  10-bit up counter                                     : 1
  32-bit down counter                                   : 1
  4-bit up counter                                      : 3
-# Registers                                            : 61
- Flip-Flops                                            : 61
+# Registers                                            : 55
+ Flip-Flops                                            : 55
 # Comparators                                          : 2
  32-bit comparator greater                             : 1
  4-bit comparator greater                              : 1
-# Multiplexers                                         : 35
- 1-bit 2-to-1 multiplexer                              : 25
+# Multiplexers                                         : 31
+ 1-bit 2-to-1 multiplexer                              : 18
  1-bit 8-to-1 multiplexer                              : 1
  10-bit 2-to-1 multiplexer                             : 1
- 4-bit 2-to-1 multiplexer                              : 1
+ 4-bit 2-to-1 multiplexer                              : 4
  8-bit 2-to-1 multiplexer                              : 7
-# FSMs                                                 : 2
+# FSMs                                                 : 4
 # Xors                                                 : 1
  1-bit xor2                                            : 1
 
@@ -374,7 +405,25 @@ Optimizing FSM <UARTunit_inst/Tx/FSM_0> on signal <etat[1:3]> with user encoding
  last            | 101
 -----------------------------
 Analyzing FSM <MFsm> for best encoding.
-Optimizing FSM <echoUnit_inst/FSM_1> on signal <etat[1:3]> with user encoding.
+Optimizing FSM <UARTunit_inst/Rx/u_compteur16/FSM_1> on signal <etat[1:2]> with user encoding.
+---------------------
+ State   | Encoding
+---------------------
+ repos   | 00
+ count8  | 01
+ count16 | 10
+---------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <UARTunit_inst/Rx/u_controleReception/FSM_2> on signal <etat[1:2]> with user encoding.
+-----------------------
+ State     | Encoding
+-----------------------
+ repos     | 00
+ reception | 01
+ transfert | 10
+-----------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <echoUnit_inst/FSM_3> on signal <etat[1:3]> with user encoding.
 ------------------------------
  State            | Encoding
 ------------------------------
@@ -399,51 +448,56 @@ Optimizing unit <ControleReception> ...
 Optimizing unit <ctrlUnit> ...
 
 Optimizing unit <echoUnit> ...
-WARNING:Xst:1710 - FF/Latch <UARTunit_inst/control_unit/registreC_0> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <UARTunit_inst/control_unit/IntT> of sequential type is unconnected in block <UART_FPGA_N4>.
-WARNING:Xst:1293 - FF/Latch <UARTunit_inst/Rx/u_compteur16/count_3> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_6> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_5> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_4> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_3> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_2> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_0> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_6> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_5> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_4> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_3> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_2> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_0> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/registerT_6> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/registerT_5> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/registerT_4> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/registerT_3> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/registerT_2> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/registerT_0> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_6> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_5> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_4> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_3> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_2> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_2> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_3> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_4> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_5> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <echoUnit_inst/donnee_6> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_0> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_2> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_3> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_4> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_5> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <echoUnit_inst/data_out_6> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <echoUnit_inst/etat_FSM_FFd2> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <UARTunit_inst/control_unit/registreC_1> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <UARTunit_inst/control_unit/IntR> (without init value) has a constant value of 1 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <UARTunit_inst/control_unit/registreC_2> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <UARTunit_inst/Tx/registerT_0> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <UARTunit_inst/Tx/registerT_2> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <UARTunit_inst/Tx/registerT_3> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <UARTunit_inst/Tx/registerT_4> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <UARTunit_inst/Tx/registerT_5> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <UARTunit_inst/Tx/registerT_6> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_0> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_compteur16/tmpclk> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/control_unit/IntR> (without init value) has a constant value of 1 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <echoUnit_inst/etat_FSM_FFd2> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_31> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_30> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_29> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_28> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_27> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_26> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_25> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_24> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_23> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_22> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_21> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_20> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_19> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_18> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_3> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_2> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_3> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_4> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_5> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/bufferT_6> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <UARTunit_inst/control_unit/IntT> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <UARTunit_inst/Rx/u_controleReception/OErr> is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <UARTunit_inst/control_unit/registreC_0> is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/counter_trames_3> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/counter_trames_2> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/counter_trames_1> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/counter_trames_0> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/etat_FSM_FFd1> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/etat_FSM_FFd2> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/count_3> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/count_2> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/count_1> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/count_0> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/tmpclk> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/tmprxd> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_controleReception/bit_count_3> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_controleReception/bit_count_2> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_controleReception/bit_count_1> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_controleReception/bit_count_0> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_controleReception/etat_FSM_FFd1> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_controleReception/etat_FSM_FFd2> of sequential type is unconnected in block <UART_FPGA_N4>.
+WARNING:Xst:1293 - FF/Latch <UARTunit_inst/Tx/cpt_3> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_4> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_5> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_6> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
@@ -458,34 +512,27 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cp
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_15> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_16> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_17> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/bit_count_3> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/bit_count_2> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/bit_count_1> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/bit_count_0> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/received_data_7> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/received_data_6> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/received_data_5> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/received_data_4> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/received_data_3> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/received_data_2> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/received_data_1> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/received_data_0> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/DRdy> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/start_detected> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Rx/u_controleReception/Ferr> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/control_unit/registreC_1> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/control_unit/registreC_2> (without init value) has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1898 - Due to constant pushing, FF/Latch <UARTunit_inst/Rx/u_compteur16/tmprxd> is unconnected in block <UART_FPGA_N4>.
-WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/count_2> of sequential type is unconnected in block <UART_FPGA_N4>.
-WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/count_1> of sequential type is unconnected in block <UART_FPGA_N4>.
-WARNING:Xst:2677 - Node <UARTunit_inst/Rx/u_compteur16/count_0> of sequential type is unconnected in block <UART_FPGA_N4>.
-
-Mapping all equations...
-Building and optimizing final netlist ...
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_18> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_19> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_20> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_21> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_22> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_23> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_24> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_25> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_26> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_27> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_28> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_29> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_30> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <UARTunit_inst/Tx/cpt_31> has a constant value of 0 in block <UART_FPGA_N4>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <UARTunit_inst/Tx/registerT_1> in Unit <UART_FPGA_N4> is equivalent to the following FF/Latch, which will be removed : <UARTunit_inst/Tx/registerT_7> 
 INFO:Xst:2261 - The FF/Latch <echoUnit_inst/donnee_7> in Unit <UART_FPGA_N4> is equivalent to the following FF/Latch, which will be removed : <echoUnit_inst/donnee_1> 
 INFO:Xst:2261 - The FF/Latch <echoUnit_inst/data_out_7> in Unit <UART_FPGA_N4> is equivalent to the following FF/Latch, which will be removed : <echoUnit_inst/data_out_1> 
 INFO:Xst:2261 - The FF/Latch <UARTunit_inst/Tx/bufferT_7> in Unit <UART_FPGA_N4> is equivalent to the following FF/Latch, which will be removed : <UARTunit_inst/Tx/bufferT_1> 
-INFO:Xst:2261 - The FF/Latch <UARTunit_inst/Tx/registerT_7> in Unit <UART_FPGA_N4> is equivalent to the following FF/Latch, which will be removed : <UARTunit_inst/Tx/registerT_1> 
+
+Mapping all equations...
+Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 0) on block UART_FPGA_N4, actual ratio is 0.
 
 Final Macro Processing ...
@@ -681,7 +728,7 @@ Offset:              1.047ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            35   0.001   0.552  btnC_IBUF (UARTunit_inst/Tx/reset_inv)
+     IBUF:I->O            35   0.001   0.552  btnC_IBUF (UARTunit_inst/Rx/u_compteur16/reset_inv)
      FDC:CLR                   0.494          divUnit_inst/nclk
     ----------------------------------------
     Total                      1.047ns (0.495ns logic, 0.552ns route)
@@ -700,7 +747,7 @@ Offset:              1.251ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            35   0.001   0.552  btnC_IBUF (UARTunit_inst/Tx/reset_inv)
+     IBUF:I->O            35   0.001   0.552  btnC_IBUF (UARTunit_inst/Rx/u_compteur16/reset_inv)
      INV:I->O              3   0.146   0.413  echoUnit_inst/_n0056_inv1_INV_0 (echoUnit_inst/_n0056_inv)
      FDE:CE                    0.139          echoUnit_inst/cs
     ----------------------------------------
@@ -750,15 +797,15 @@ mclk           |    3.385|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 6.24 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.82 secs
  
 --> 
 
 
-Total memory usage is 496240 kilobytes
+Total memory usage is 496264 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   93 (   0 filtered)
+Number of warnings :   91 (   0 filtered)
 Number of infos    :    4 (   0 filtered)
 

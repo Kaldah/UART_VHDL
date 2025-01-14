@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="NgdBuild" timeStamp="Fri Jan 10 14:01:03 2025">
+  <application stringID="NgdBuild" timeStamp="Tue Jan 14 15:52:39 2025">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -25,15 +25,15 @@
       </table>
       <item stringID="User_EnvOs" value="OS Information">
         <item stringID="User_EnvOsname" value="Ubuntu"/>
-        <item stringID="User_EnvOsrelease" value="Ubuntu 20.04.6 LTS"/>
+        <item stringID="User_EnvOsrelease" value="Ubuntu 20.04.3 LTS"/>
       </item>
-      <item stringID="User_EnvHost" value="hippogriffe.enseeiht.fr"/>
+      <item stringID="User_EnvHost" value="gambit.enseeiht.fr"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
           <item stringID="arch" value="Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz"/>
-          <item stringID="speed" value="3770.947 MHz"/>
+          <item stringID="speed" value="3700.930 MHz"/>
         </row>
       </table>
     </section>

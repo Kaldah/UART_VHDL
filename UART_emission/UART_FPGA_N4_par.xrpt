@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="par" timeStamp="Fri Jan 10 14:01:38 2025">
+  <application stringID="par" timeStamp="Tue Jan 14 15:53:12 2025">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -25,15 +25,15 @@
       </table>
       <item stringID="User_EnvOs" value="OS Information">
         <item stringID="User_EnvOsname" value="Ubuntu"/>
-        <item stringID="User_EnvOsrelease" value="Ubuntu 20.04.6 LTS"/>
+        <item stringID="User_EnvOsrelease" value="Ubuntu 20.04.3 LTS"/>
       </item>
-      <item stringID="User_EnvHost" value="hippogriffe.enseeiht.fr"/>
+      <item stringID="User_EnvHost" value="gambit.enseeiht.fr"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
           <item stringID="arch" value="Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz"/>
-          <item stringID="speed" value="3698.509 MHz"/>
+          <item stringID="speed" value="3609.025 MHz"/>
         </row>
       </table>
     </section>
@@ -44,12 +44,12 @@
     </task>
     <task stringID="PAR_PAR">
       <section stringID="PAR_DESIGN_SUMMARY">
-        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="14 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="14 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="13 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="13 secs "/>
         <item dataType="int" stringID="PAR_UNROUTES" value="0"/>
         <item dataType="float" stringID="PAR_TIMING_SCORE" value="0.000000"/>
-        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="15 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="14 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="14 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="13 secs "/>
       </section>
     </task>
     <task stringID="PAR_par">
@@ -2456,7 +2456,7 @@
     </task>
   </application>
 
-  <application stringID="Par" timeStamp="Fri Jan 10 14:01:39 2025">
+  <application stringID="Par" timeStamp="Tue Jan 14 15:53:13 2025">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -2476,15 +2476,15 @@
       </table>
       <item stringID="User_EnvOs" value="OS Information">
         <item stringID="User_EnvOsname" value="Ubuntu"/>
-        <item stringID="User_EnvOsrelease" value="Ubuntu 20.04.6 LTS"/>
+        <item stringID="User_EnvOsrelease" value="Ubuntu 20.04.3 LTS"/>
       </item>
-      <item stringID="User_EnvHost" value="hippogriffe.enseeiht.fr"/>
+      <item stringID="User_EnvHost" value="gambit.enseeiht.fr"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
           <item stringID="arch" value="Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz"/>
-          <item stringID="speed" value="3683.291 MHz"/>
+          <item stringID="speed" value="3697.777 MHz"/>
         </row>
       </table>
     </section>
@@ -2519,8 +2519,8 @@
           <item dataType="int" stringID="PAR_NUM_LUT_RT_DRIVES_CARRY4" value="0"/>
           <item dataType="int" stringID="PAR_NUM_LUT_RT_DRIVES_OTHERS" value="0"/>
         </item>
-        <item AVAILABLE="15850" dataType="int" stringID="PAR_OCCUPIED_SLICES" value="25">
-          <item AVAILABLE="11100" dataType="int" stringID="PAR_NUM_SLICEL" value="25"/>
+        <item AVAILABLE="15850" dataType="int" stringID="PAR_OCCUPIED_SLICES" value="27">
+          <item AVAILABLE="11100" dataType="int" stringID="PAR_NUM_SLICEL" value="27"/>
           <item AVAILABLE="4750" dataType="int" stringID="PAR_NUM_SLICEM" value="0"/>
         </item>
         <item dataType="int" stringID="PAR_OCCUPIED_LUT_AND_FF" value="61">
