@@ -14,24 +14,47 @@ end Compteur16;
 
 architecture Behavioral of Compteur16 is
     signal count : integer range 0 to 15 := 0;
+
+    type t_etat is (repos, count8, count16);
+    signal etat : t_etat := repos;
+    signal counter_trames : integer range 0 to 10 := 0;
+
 begin
     process(clk, reset)
     begin
-        if reset = '1' then
+        if reset = '0' then
             count <= 0;
             tmpclk <= '0';
-            tmprxd <= '0';
+            tmprxd <= '1';
+            etat <= repos;
         elsif rising_edge(clk) then
-            if enable = '1' then
-                if count = 15 then
-                    count <= 0;
-                    tmpclk <= RxD;
-                elsif count = 7 then
-                    tmprxd <= RxD;
-                else
+            case etat is
+                when repos =>
+                    if enable = '1' then
+                        if RxD = '0' then
+                            etat <= count8;
+                        end if;
+                    end if;
+                when count8 =>
                     count <= count + 1;
-                end if;
-            end if;
+                    if count = 8 then
+                        tmpclk <= '1';
+                        tmprxd <= RxD;
+                        etat <= count16;
+                    end if;
+                when count16 =>
+                    count <= count + 1;
+                    if count = 15 then
+                        tmpclk <= RxD;
+                        tmpclk <= RxD;
+                        count <= 0;
+                        counter_trames <= counter_trames + 1;
+                    end if;
+                    if counter_trames = 10 then
+                        counter_trames <= 0;
+                        etat <= repos;
+                    end if;
+            end case;
         end if;
     end process;
 end Behavioral;
