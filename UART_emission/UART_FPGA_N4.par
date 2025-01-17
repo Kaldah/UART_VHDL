@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-gambit.enseeiht.fr::  Tue Jan 14 15:53:03 2025
+scoubidou.enseeiht.fr::  Fri Jan 17 14:52:14 2025
 
 par -w UART_FPGA_N4_map.ncd UART_FPGA_N4.ncd UART_FPGA_N4_map.pcf 
 
@@ -27,26 +27,29 @@ Device speed data version:  "PRODUCTION 1.10 2013-10-13".
 Device Utilization Summary:
 
 Slice Logic Utilization:
-  Number of Slice Registers:                    37 out of 126,800    1%
-    Number used as Flip Flops:                  37
+  Number of Slice Registers:                   105 out of 126,800    1%
+    Number used as Flip Flops:                 105
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                         60 out of  63,400    1%
-    Number used as logic:                       60 out of  63,400    1%
-      Number using O6 output only:              46
+  Number of Slice LUTs:                        110 out of  63,400    1%
+    Number used as logic:                      107 out of  63,400    1%
+      Number using O6 output only:              74
       Number using O5 output only:               4
-      Number using O5 and O6:                   10
+      Number using O5 and O6:                   29
       Number used as ROM:                        0
     Number used as Memory:                       0 out of  19,000    0%
-    Number used exclusively as route-thrus:      0
+    Number used exclusively as route-thrus:      3
+      Number with same-slice register load:      3
+      Number with same-slice carry load:         0
+      Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    27 out of  15,850    1%
-  Number of LUT Flip Flop pairs used:           61
-    Number with an unused Flip Flop:            27 out of      61   44%
-    Number with an unused LUT:                   1 out of      61    1%
-    Number of fully used LUT-FF pairs:          33 out of      61   54%
+  Number of occupied Slices:                    51 out of  15,850    1%
+  Number of LUT Flip Flop pairs used:          120
+    Number with an unused Flip Flop:            35 out of     120   29%
+    Number with an unused LUT:                  10 out of     120    8%
+    Number of fully used LUT-FF pairs:          75 out of     120   62%
     Number of slice register sites lost
       to control set restrictions:               0 out of 126,800    0%
 
@@ -99,8 +102,8 @@ Specific Feature Utilization:
 Overall effort level (-ol):   Standard 
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 10 secs 
-Finished initial Timing Analysis.  REAL time: 10 secs 
+Starting initial Timing Analysis.  REAL time: 5 secs 
+Finished initial Timing Analysis.  REAL time: 5 secs 
 
 WARNING:Par:288 - The signal btnD_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal swt<10>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -109,7 +112,6 @@ WARNING:Par:288 - The signal swt<12>_IBUF has no load.  PAR will not attempt to 
 WARNING:Par:288 - The signal swt<13>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal btnL_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal swt<14>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal RxD_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal swt<15>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal btnR_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal btnU_IBUF has no load.  PAR will not attempt to route this signal.
@@ -126,27 +128,27 @@ WARNING:Par:288 - The signal swt<9>_IBUF has no load.  PAR will not attempt to r
 Starting Router
 
 
-Phase  1  : 332 unrouted;      REAL time: 11 secs 
+Phase  1  : 653 unrouted;      REAL time: 6 secs 
 
-Phase  2  : 258 unrouted;      REAL time: 11 secs 
+Phase  2  : 539 unrouted;      REAL time: 6 secs 
 
-Phase  3  : 37 unrouted;      REAL time: 11 secs 
+Phase  3  : 106 unrouted;      REAL time: 6 secs 
 
-Phase  4  : 37 unrouted; (Par is working to improve performance)     REAL time: 13 secs 
+Phase  4  : 106 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
 Updating file: UART_FPGA_N4.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 13 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 13 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 13 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 13 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 13 secs 
-Total REAL time to Router completion: 13 secs 
-Total CPU time to Router completion: 13 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
+Total REAL time to Router completion: 7 secs 
+Total CPU time to Router completion: 7 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -166,11 +168,11 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net div | SETUP       |         N/A|     2.903ns|     N/A|           0
-  Unit_inst/nclk_BUFG                       | HOLD        |     0.166ns|            |       0|           0
+  Autotimespec constraint for clock net div | SETUP       |         N/A|     3.261ns|     N/A|           0
+  Unit_inst/nclk_BUFG                       | HOLD        |     0.021ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net mcl | SETUP       |         N/A|     3.445ns|     N/A|           0
-  k_BUFGP                                   | HOLD        |     0.284ns|            |       0|           0
+  Autotimespec constraint for clock net mcl | SETUP       |         N/A|     3.386ns|     N/A|           0
+  k_BUFGP                                   | HOLD        |     0.270ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -186,10 +188,10 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-WARNING:Par:283 - There are 21 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+WARNING:Par:283 - There are 20 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 14 secs 
-Total CPU time to PAR completion: 13 secs 
+Total REAL time to PAR completion: 8 secs 
+Total CPU time to PAR completion: 7 secs 
 
 Peak Memory Usage:  1039 MB
 
@@ -197,7 +199,7 @@ Placer: Placement generated during map.
 Routing: Completed - No errors found.
 
 Number of error messages: 0
-Number of warning messages: 23
+Number of warning messages: 22
 Number of info messages: 2
 
 Writing design to file UART_FPGA_N4.ncd

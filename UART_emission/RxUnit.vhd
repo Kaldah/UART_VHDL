@@ -20,7 +20,6 @@ architecture Behavioral of RxUnit is
 
   component Compteur16
     port (
-      clk : in std_logic;
       reset : in std_logic;
       enable : in std_logic;
       RxD : in std_logic;
@@ -46,7 +45,6 @@ architecture Behavioral of RxUnit is
 begin
   u_compteur16 : Compteur16
       port map (
-          clk => clk,
           reset => reset,
           enable => enable,
           RxD => rxd,

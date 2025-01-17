@@ -8,7 +8,7 @@ Loading device for application Rf_Device from file '7a100t.nph' in environment
    "UART_FPGA_N4" is an NCD, version 3.2, device xc7a100t, package csg324, speed
 -1
 
-Tue Jan 14 15:53:24 2025
+Fri Jan 17 14:52:27 2025
 
 /mnt/n7fs/install/xilinx_14.7/ISE/bin/lin64/unwrapped/bitgen -w UART_FPGA_N4.ncd 
 
@@ -162,8 +162,6 @@ WARNING:PhysDesignRules:367 - The signal <btnL_IBUF> is incomplete. The signal
    does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <swt<14>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <RxD_IBUF> is incomplete. The signal
-   does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <swt<15>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <btnR_IBUF> is incomplete. The signal
@@ -186,7 +184,7 @@ WARNING:PhysDesignRules:367 - The signal <swt<6>_IBUF> is incomplete. The signal
    does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <swt<7>_IBUF> is incomplete. The signal
    does not drive any load pins in the design.
-DRC detected 0 errors and 19 warnings.  Please see the previously displayed
+DRC detected 0 errors and 18 warnings.  Please see the previously displayed
 individual error or warning messages for more details.
 Creating bit map...
 Saving bit stream in "UART_FPGA_N4.bit".

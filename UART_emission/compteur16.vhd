@@ -3,7 +3,6 @@ use IEEE.std_logic_1164.all;
 
 entity Compteur16 is
     Port (
-        clk : in std_logic;
         reset : in std_logic;
         RxD : in std_logic;
         enable : in std_logic;
@@ -17,23 +16,24 @@ architecture Behavioral of Compteur16 is
 
     type t_etat is (repos, count8, count16);
     signal etat : t_etat := repos;
-    signal counter_trames : integer range 0 to 10 := 0;
+    signal counter_bits : integer range 0 to 10 := 0;
 
 begin
-    process(clk, reset)
+    process(enable, reset)
     begin
         if reset = '0' then
             count <= 0;
             tmpclk <= '0';
-            tmprxd <= '1';
+            tmprxd <= '0';
             etat <= repos;
-        elsif rising_edge(clk) then
+        elsif rising_edge(enable) then
             case etat is
                 when repos =>
-                    if enable = '1' then
-                        if RxD = '0' then
-                            etat <= count8;
-                        end if;
+                    count <= 0;
+                    tmpclk <= '0';
+                    tmprxd <= '0';
+                    if RxD = '0' then
+                        etat <= count8;
                     end if;
                 when count8 =>
                     count <= count + 1;
@@ -45,15 +45,20 @@ begin
                     end if;
                 when count16 =>
                     count <= count + 1;
+                    
                     if count = 15 then
-                        tmpclk <= RxD;
-                        tmpclk <= RxD;
+                        tmprxd <= RxD;
+                        tmpclk <= '1';
                         count <= 0;
-                        counter_trames <= counter_trames + 1;
-                    end if;
-                    if counter_trames = 10 then
-                        counter_trames <= 0;
-                        etat <= repos;
+                        -- 11 bits bits
+                        if counter_bits = 10 then
+                            counter_bits <= 0;
+                            etat <= repos;
+                        else
+                            counter_bits <= counter_bits + 1;
+                        end if;
+                    else
+                        tmpclk <= '0';
                     end if;
             end case;
         end if;

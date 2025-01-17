@@ -1,7 +1,7 @@
 Release 14.7 Drc P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Tue Jan 14 15:53:24 2025
+Fri Jan 17 14:52:27 2025
 
 drc -z UART_FPGA_N4.ncd
 
@@ -19,8 +19,6 @@ WARNING:PhysDesignRules:367 - The signal <btnL_IBUF> is incomplete. The signal
    does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <swt<14>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <RxD_IBUF> is incomplete. The signal
-   does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <swt<15>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <btnR_IBUF> is incomplete. The signal
@@ -43,5 +41,5 @@ WARNING:PhysDesignRules:367 - The signal <swt<6>_IBUF> is incomplete. The signal
    does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <swt<7>_IBUF> is incomplete. The signal
    does not drive any load pins in the design.
-DRC detected 0 errors and 19 warnings.  Please see the previously displayed
+DRC detected 0 errors and 18 warnings.  Please see the previously displayed
 individual error or warning messages for more details.
